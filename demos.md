@@ -1005,7 +1005,7 @@ spring.application.name=schema-registry
 
 * Application osztályon `@EnableSchemaRegistryClient` annotáció
 
-* IDEA Avro IDL Support plugin
+* IDEA Avro Schema Support plugin
 * `src/main/avro/CreateEmployeeCommand.avsc`
 
 ```json
