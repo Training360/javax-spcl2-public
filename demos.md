@@ -752,23 +752,13 @@ public class GatewayConfig {
   broker topic-ja.
 
 ```yaml
-cloud:
-  stream:
-    function:
-      bindings:
-        createEmployee-in-0: employee-backend-command
-        createEmployee-out-0: employee-backend-event
-```
-
-* Meg lehet az implicit binding névhez adni explicit nevet is, de talán ez egy felesleges absztrakciós szint.
-
-```yaml
 spring:
   cloud:
     stream:
       function:
         bindings:
-          createEmployee-in-0: createEmployeeInput
+          createEmployee-in-0: employee-backend-command
+          createEmployee-out-0: employee-backend-event
 ```
 
 * Ha csak egy `java.util.function.[Supplier/Function/Consumer]` van, akkor azt automatikusan bekonfigurálja,
@@ -793,8 +783,13 @@ public class GatewayConfig {
 }
 ```
 
-```
-spring.cloud.stream.function.bindings.employeeCreated-in-0=employee-backend-event
+```yaml
+spring:
+  cloud:
+    stream:
+      function:
+        bindings:
+          employeeCreated-in-0:employee-backend-event
 ```
 
 ## Polling Supplier esetén
@@ -825,6 +820,7 @@ spring:
 
 ```yaml
 spring:
+  cloud:
     stream:
       bindings:
         tick-out-0:
@@ -1052,7 +1048,7 @@ spring.application.name=schema-registry
 streamBridge.send("createEmployee", command);
 ```
 
-* `application.yaml`
+* `application.yaml` fájlba beszúrni:
 
 ```yaml
 spring:
@@ -1060,10 +1056,8 @@ spring:
     stream:
       bindings:
           createEmployee:
-            destination: employee-backend-command
             contentType: application/*+avro
           employeeCreated-in-0:
-            destination: employee-backend-event
             contentType: application/*+avro
 ```
 
@@ -1107,7 +1101,7 @@ GET http://localhost:8990/createemployeecommand/avro
 * `.avsc` fájlok másolása
 * `CreateEmployeeCommand`, `EmployeeHasBeenCreatedEvent` törlése
 * `mvn clean package`, Maven frissítés
-* `application.yaml`
+* `application.yaml` fájlba beszúrni:
 
 ```yaml
 spring:
@@ -1117,10 +1111,8 @@ spring:
     stream:
         bindings:
           createEmployee-in-0:
-            destination: employee-backend-command
             contentType: application/*+avro
           createEmployee-out-0:
-            destination: employee-backend-event
             contentType: application/*+avro
 ```
 
