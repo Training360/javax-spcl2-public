@@ -19,8 +19,10 @@ spring:
 #          error-handler-definition: employeesErrorHandler
           destination: employee-backend-command
           group: employee-backend
+          content-type: application/*+avro
         createEmployee-out-0:
           destination: employee-backend-event
+          content-type: application/*+avro
         tick-out-0:
           producer:
             poller:

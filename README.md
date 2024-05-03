@@ -47,8 +47,8 @@ A `demos` könyvtár tartalmazza a videón szereplő feladatok megoldását.
     * DLQ (`stream-employees-backend`)
     * Spring Cloud Stream Tracing (`stream-employees-backend`, `stream-employees-frontend`)
     * Schema registry (`stream-employees-schema-registry`)
-    * Avro formátumú üzenet küldése - frontend (`stream-employees-frontend`)
-    * Avro formátumú üzenet fogadása, válasz - backend (`stream-employees-backend`)
+    * Avro formátumú üzenet küldése - frontend (`stream-employees-frontend-avro`)
+    * Avro formátumú üzenet fogadása, válasz - backend (`stream-employees-backend-avro`)
 * Spring Cloud Circuit Breaker
     * Backend alkalmazás előkészítése (`circuitbreaker-employees-backend`)
     * Resilience4j bevezetése, circuit breaker (`circuitbreaker-employees-frontend`)
